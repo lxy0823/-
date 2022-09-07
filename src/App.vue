@@ -8,10 +8,4 @@
 export default {}
 </script>
 
-<style scoped>
-.box {
-  height: 2rem;
-  width: 2rem;
-  background-color: hotpink;
-}
-</style>
+<style scoped></style>
