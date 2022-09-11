@@ -8,6 +8,29 @@ Vue.use(VueRouter)
 // 使用到了路由页面，再去请求他
 const routes = [
   {
+    path: '/',
+    component: () => import('@/views/Layout'),
+    redirect: '/ ',
+    children: [
+      {
+        path: '/ ',
+        component: () => import('@/views/Home')
+      },
+      {
+        path: '/video',
+        component: () => import(/* webpackChunkName: "base" */ '@/views/Video')
+      },
+      {
+        path: '/qa',
+        component: () => import(/* webpackChunkName: "base" */ '@/views/QA')
+      },
+      {
+        path: '/my',
+        component: () => import('@/views/My')
+      }
+    ]
+  },
+  {
     path: '/login',
     component: () => import('@/views/Login')
   }
