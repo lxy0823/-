@@ -29,12 +29,15 @@
           height="60"
           :src="item"
         ></van-image>
+        <p>{{ label }}</p>
       </template>
     </van-cell>
   </div>
 </template>
 
 <script>
+import dayjs from '@/utlis/dayjs'
+import { getAllChannelAPI } from '@/api'
 export default {
   props: {
     article: {
@@ -46,7 +49,7 @@ export default {
     label() {
       /*eslint-disable */
       const { aut_name, comm_count, pubdate } = this.article
-      return `${aut_name} ${comm_count} ${pubdate}`
+      return `${aut_name} ${comm_count}评论 ${dayjs(pubdate).fromNow()}`
     }
   }
 }
