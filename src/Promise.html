@@ -53,25 +53,51 @@
                 }
             }
             then(onFulfilled, onRejected) {
-                if (this.status === FUFILLED) {
-                    onFulfilled(this.value)
-                }
-                if (this.status === REJECTED) {
-                    onRejected(this.reason)
-                }
-                if (this.status === PENDING) {
-                    // 异步
-                    // 订阅
-                    // this.onFulfilled = onFulfilled
-                    // this.onRejected = onRejected
-                    this.onFulfilledCallbacks.push(() => {
-                        onFulfilled(this.value)
-                    })
-
-                    this.onRejectedCallbacks.push(() => {
-                        onRejected(this.reason)
-                    })
-                }
+                const p2 = new Promise((resolve, reject) => {
+                    if (this.status === FUFILLED) {
+                        const x = queueMicrotask(() => {
+                            resolve(x);
+                            try {
+                                onFulfilled(this.value)
+                            } catch (error) {
+                                reject(error);
+                            }
+                        })
+                    }
+                    if (this.status === REJECTED) {
+                        queueMicrotask(() => {
+                            try {
+                                onRejected(this.reason)
+                            } catch (error) {
+                                reject(error);
+                            }
+                        })
+                    }
+                    if (this.status === PENDING) {
+                        // 异步
+                        // 订阅
+                        // this.onFulfilled = onFulfilled
+                        // this.onRejected = onRejected
+                        this.onFulfilledCallbacks.push(() => {
+                            queueMicrotask(() => {
+                                try {
+                                    onFulfilled(this.value)
+                                } catch (error) {
+                                    reject(error);
+                                }
+                            })
+                        })
+                        this.onRejectedCallbacks.push(() => {
+                            queueMicrotask(() => {
+                                try {
+                                    onRejected(this.reason)
+                                } catch (error) {
+                                    reject(error);
+                                }
+                            })
+                        })
+                    }
+                })
             }
         }
 

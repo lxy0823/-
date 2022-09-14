@@ -37,7 +37,6 @@
 
 <script>
 import dayjs from '@/utlis/dayjs'
-import { getAllChannelAPI } from '@/api'
 export default {
   props: {
     article: {

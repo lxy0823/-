@@ -37,6 +37,7 @@
           :key="item.id"
           :text="item.name"
           icon="plus"
+          @click="$emit('add-channel', item)"
         />
       </van-grid>
     </div>
@@ -77,9 +78,9 @@ export default {
         alert(error)
       }
     },
-    handleMyChannel({ name }, index) {
+    handleMyChannel({ name, id }, index) {
       if (this.isEdit && name !== '推荐') {
-        console.log('删除频道', name)
+        this.$emit('del-channel', id)
       } else {
         this.$emit('channel-active', index)
       }
