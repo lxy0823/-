@@ -3,7 +3,7 @@
     <!-- 二级路由 -->
     <router-view></router-view>
     <!-- 导航区 -->
-    <van-tabbar v-model="active" route class="tabbar" active-color="hotpink">
+    <van-tabbar v-model="active" route class="tabbar" active-color="#3296fa">
       <van-tabbar-item to="/ ">
         <template #icon>
           <span class="toutiao toutiao-shouye"></span>

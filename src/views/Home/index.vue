@@ -3,7 +3,14 @@
     <!-- 搜索框 -->
     <van-nav-bar class="navbar">
       <template #title>
-        <van-button icon="search" size="small" round block>搜索</van-button>
+        <van-button
+          icon="search"
+          size="small"
+          round
+          block
+          @click="$router.push('/search')"
+          >搜索</van-button
+        >
       </template>
     </van-nav-bar>
     <!-- tab标签频道及文章展示 -->
@@ -127,7 +134,7 @@ export default {
 
 <style scoped lang="less">
 .navbar {
-  background-color: hotpink;
+  background-color: #3296fa;
 
   // inherit 继承
   // unset 不设置
@@ -135,7 +142,7 @@ export default {
     max-width: unset;
   }
   .van-button--default {
-    background-color: pink;
+    background-color: skyblue;
     border: 0;
     color: #fff;
     font-size: 30px;

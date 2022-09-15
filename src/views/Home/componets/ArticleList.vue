@@ -99,7 +99,7 @@ export default {
 // - 1.定高 2.overflow:auto/scroll/overlay
 .article {
   height: calc(100vh - 92px - 83px - 100px);
-  overflow: auto;
+  overflow: overlay;
 
   // &: 代表当前元素他爹
   // ::-webkit-scrollbar : 滚动槽
@@ -109,7 +109,7 @@ export default {
     background-color: transparent;
   }
   &::-webkit-scrollbar-thumb {
-    background-color: hotpink;
+    background-color: #3296fa;
     border-radius: 10px;
   }
 }
