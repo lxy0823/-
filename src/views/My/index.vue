@@ -30,7 +30,11 @@
               align="center"
               style="height: 100%"
             >
-              <van-button size="mini" round class="edit-btn"
+              <van-button
+                size="mini"
+                round
+                class="edit-btn"
+                @click="$router.push('/user')"
                 >编辑资料</van-button
               >
             </van-row>
